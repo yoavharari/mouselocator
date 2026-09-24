@@ -56,6 +56,59 @@
             pointer-events: none;
         }
 
+        /* Decorative Cursor Icons */
+        .cursor-icon {
+            position: absolute;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1;
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+        }
+
+        .cursor-icon-1 {
+            top: 10%;
+            left: 5%;
+            width: 60px;
+            height: 60px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cursor-icon-2 {
+            top: 25%;
+            right: 8%;
+            width: 48px;
+            height: 48px;
+            animation: float 7s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .cursor-icon-3 {
+            bottom: 20%;
+            left: 10%;
+            width: 52px;
+            height: 52px;
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .cursor-icon-4 {
+            bottom: 15%;
+            right: 5%;
+            width: 56px;
+            height: 56px;
+            animation: float 6.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -89,7 +142,7 @@
             gap: 16px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
 
         @media (min-width: 640px) {
@@ -146,6 +199,38 @@
             transform: translateY(0);
         }
 
+        /* QR Code Section */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .qr-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .qr-image:hover {
+            transform: scale(1.05);
+        }
+
+        .qr-text {
+            font-size: 0.85rem;
+            color: #737373;
+            font-weight: 500;
+        }
+
         /* How to Install Section */
         .install-section {
             padding: 100px 24px;
@@ -164,42 +249,82 @@
 
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .step {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(37, 99, 235, 0.03) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(37, 99, 235, 0.06) 100%);
+            transform: translateY(-4px);
         }
 
         .step-badge {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             border-radius: 12px;
-            font-weight: 600;
-            color: #60a5fa;
-            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .step-title {
-            font-size: 1.125rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            font-weight: 700;
             color: #ffffff;
+            letter-spacing: -0.01em;
         }
 
         .step-description {
             font-size: 0.95rem;
             color: #a3a3a3;
-            line-height: 1.6;
+            line-height: 1.7;
+        }
+
+        .step-description strong {
+            color: #e5e5e5;
+            font-weight: 600;
+        }
+
+        .step-description code {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .step-note {
+            background: rgba(59, 130, 246, 0.08);
+            border-left: 3px solid #60a5fa;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #a3a3a3;
+            margin-top: 8px;
+        }
+
+        .step-note strong {
+            color: #60a5fa;
         }
 
         /* Footer */
@@ -259,6 +384,10 @@
             }
 
             .button-group {
+                margin-bottom: 32px;
+            }
+
+            .qr-section {
                 margin-bottom: 40px;
             }
 
@@ -272,11 +401,37 @@
 
             .steps-grid {
                 gap: 32px;
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                padding: 24px;
+            }
+
+            .cursor-icon {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Decorative Cursor Icons -->
+    <svg class="cursor-icon cursor-icon-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
+    <svg class="cursor-icon cursor-icon-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
+    <svg class="cursor-icon cursor-icon-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
+    <svg class="cursor-icon cursor-icon-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -284,8 +439,13 @@
             <p class="hero-subtitle">Instantly snap your cursor to the center of your screen with a simple hotkey. Built for macOS.</p>
             
             <div class="button-group">
-<a href="https://github.com/yoavharari/mouselocator/releases/download/v1.0.0/MouseLocator.zip" download class="button button-primary">Download for macOS (Free)</a>
-                <a href="https://ko-fi.com/mouselocator" target="_blank" rel="noopener noreferrer" class="button button-secondary">Donate If You Enjoyed</a>
+                <a href="https://github.com/yoavharari/mouselocator/releases/download/v1.0.0/MouseLocator.zip" download class="button button-primary">Download for macOS (Free)</a>
+                <a href="https://paypal.me/yoavharari" target="_blank" rel="noopener noreferrer" class="button button-secondary">Donate via PayPal</a>
+            </div>
+
+            <div class="qr-section">
+                <img src="paypal-qr.png" alt="PayPal QR Code" class="qr-image">
+                <p class="qr-text">Scan with phone to donate</p>
             </div>
         </div>
     </section>
@@ -299,22 +459,31 @@
                 <!-- Step 1 -->
                 <div class="step">
                     <div class="step-badge">1</div>
-                    <div class="step-title">Install</div>
-                    <div class="step-description">Unzip the downloaded file and drag <code>MouseLocator.app</code> into your Applications folder.</div>
+                    <div class="step-title">Download & Unzip</div>
+                    <div class="step-description">
+                        Unzip the downloaded file and drag <code>MouseLocator.app</code> into your <strong>Applications</strong> folder.
+                    </div>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="step">
                     <div class="step-badge">2</div>
-                    <div class="step-title">Open Once</div>
-                    <div class="step-description">Right-click the app and select 'Open' to bypass the Mac security prompt (you only do this once).</div>
+                    <div class="step-title">First-Time Launch</div>
+                    <div class="step-description">
+                        <strong>Right-click</strong> <code>MouseLocator.app</code> → Click <strong>Open</strong> → Click <strong>Open</strong> again in the security prompt.
+                        <div class="step-note">
+                            <strong>Note:</strong> This is only required once. macOS requires this for untrusted developers.
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="step">
                     <div class="step-badge">3</div>
-                    <div class="step-title">Set Hotkey</div>
-                    <div class="step-description">Open the built-in macOS 'Shortcuts' app, create a new shortcut with the 'Open App' action targeting MouseLocator, and assign it to <code>Cmd + Control + M</code>.</div>
+                    <div class="step-title">Set Your Hotkey</div>
+                    <div class="step-description">
+                        Open macOS <strong>Shortcuts</strong> app → Create new shortcut → Add 'Open App' action → Select MouseLocator → Assign hotkey to <code>Cmd + Control + M</code>.
+                    </div>
                 </div>
             </div>
         </div>
@@ -327,7 +496,7 @@
                 &copy; 2026 MouseLocator. All rights reserved.
             </p>
             <p class="footer-text">
-                Have a question? <a href="https://ko-fi.com/mouselocator" target="_blank" rel="noopener noreferrer" class="footer-link">Get in touch</a>
+                Have a question? <a href="https://paypal.me/yoavharari" target="_blank" rel="noopener noreferrer" class="footer-link">Get in touch</a>
             </p>
         </div>
     </footer>
