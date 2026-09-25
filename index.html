@@ -56,57 +56,46 @@
             pointer-events: none;
         }
 
-        /* Decorative Cursor Icons */
+        /* Decorative Floating & Hoverable Rainbow Cursor Icons */
         .cursor-icon {
             position: absolute;
-            opacity: 0.08;
-            pointer-events: none;
-            z-index: 1;
-            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+            opacity: 0.18;
+            pointer-events: auto;
+            z-index: 10;
+            cursor: pointer;
+            color: #ffffff;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
         }
 
-        .cursor-icon-1 {
-            top: 10%;
-            left: 5%;
-            width: 60px;
-            height: 60px;
-            animation: float 6s ease-in-out infinite;
+        .cursor-icon:hover {
+            opacity: 1;
+            transform: scale(1.4) rotate(-10deg);
+            animation: rainbow-glow 2s linear infinite, float 4s ease-in-out infinite;
         }
 
-        .cursor-icon-2 {
-            top: 25%;
-            right: 8%;
-            width: 48px;
-            height: 48px;
-            animation: float 7s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        .cursor-icon-3 {
-            bottom: 20%;
-            left: 10%;
-            width: 52px;
-            height: 52px;
-            animation: float 8s ease-in-out infinite;
-            animation-delay: 2s;
-        }
-
-        .cursor-icon-4 {
-            bottom: 15%;
-            right: 5%;
-            width: 56px;
-            height: 56px;
-            animation: float 6.5s ease-in-out infinite;
-            animation-delay: 0.5s;
-        }
+        .cursor-icon-1 { top: 12%; left: 6%; width: 56px; height: 56px; animation: float 6s ease-in-out infinite; }
+        .cursor-icon-2 { top: 22%; right: 8%; width: 48px; height: 48px; animation: float 7s ease-in-out infinite 1s; }
+        .cursor-icon-3 { bottom: 25%; left: 8%; width: 52px; height: 52px; animation: float 8s ease-in-out infinite 2s; }
+        .cursor-icon-4 { bottom: 18%; right: 6%; width: 60px; height: 60px; animation: float 6.5s ease-in-out infinite 0.5s; }
+        .cursor-icon-5 { top: 45%; left: 3%; width: 44px; height: 44px; animation: float 7.5s ease-in-out infinite 1.5s; }
+        .cursor-icon-6 { top: 50%; right: 4%; width: 50px; height: 50px; animation: float 6.8s ease-in-out infinite 2.5s; }
+        .cursor-icon-7 { top: 8%; right: 25%; width: 42px; height: 42px; animation: float 8.2s ease-in-out infinite 0.8s; }
+        .cursor-icon-8 { bottom: 8%; left: 30%; width: 48px; height: 48px; animation: float 7.2s ease-in-out infinite 1.8s; }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px);
-            }
-            50% {
-                transform: translateY(-20px) translateX(10px);
-            }
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-18px) translateX(8px); }
+        }
+
+        @keyframes rainbow-glow {
+            0% { color: #ff0000; filter: drop-shadow(0 0 12px #ff0000); }
+            14% { color: #ff7f00; filter: drop-shadow(0 0 12px #ff7f00); }
+            28% { color: #ffff00; filter: drop-shadow(0 0 12px #ffff00); }
+            42% { color: #00ff00; filter: drop-shadow(0 0 12px #00ff00); }
+            57% { color: #00ffff; filter: drop-shadow(0 0 12px #00ffff); }
+            71% { color: #0000ff; filter: drop-shadow(0 0 12px #0000ff); }
+            85% { color: #9400d3; filter: drop-shadow(0 0 12px #9400d3); }
+            100% { color: #ff0000; filter: drop-shadow(0 0 12px #ff0000); }
         }
 
         .hero-content {
@@ -130,9 +119,14 @@
             color: #a3a3a3;
             margin-bottom: 48px;
             line-height: 1.5;
-            max-width: 600px;
+            max-width: 620px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .hero-subtitle strong {
+            color: #60a5fa;
+            font-weight: 600;
         }
 
         /* Button Group */
@@ -170,7 +164,7 @@
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
             box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-            min-width: 200px;
+            min-width: 220px;
         }
 
         .button-primary:hover {
@@ -236,6 +230,7 @@
             padding: 100px 24px;
             background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
         }
 
         .section-title {
@@ -249,8 +244,8 @@
 
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -264,6 +259,8 @@
             border: 1px solid rgba(59, 130, 246, 0.15);
             border-radius: 12px;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .step:hover {
@@ -358,64 +355,22 @@
             text-decoration: underline;
         }
 
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus states */
-        a:focus-visible, button:focus-visible {
-            outline: 2px solid #60a5fa;
-            outline-offset: 4px;
-        }
-
         /* Mobile Optimization */
         @media (max-width: 640px) {
-            h1 {
-                margin-bottom: 20px;
-            }
-
-            .hero-subtitle {
-                margin-bottom: 32px;
-            }
-
-            .button-group {
-                margin-bottom: 32px;
-            }
-
-            .qr-section {
-                margin-bottom: 40px;
-            }
-
-            .install-section {
-                padding: 60px 24px;
-            }
-
-            .section-title {
-                margin-bottom: 40px;
-            }
-
-            .steps-grid {
-                gap: 32px;
-                grid-template-columns: 1fr;
-            }
-
-            .step {
-                padding: 24px;
-            }
-
-            .cursor-icon {
-                display: none;
-            }
+            h1 { margin-bottom: 20px; }
+            .hero-subtitle { margin-bottom: 32px; }
+            .button-group { margin-bottom: 32px; }
+            .qr-section { margin-bottom: 40px; }
+            .install-section { padding: 60px 24px; }
+            .section-title { margin-bottom: 40px; }
+            .steps-grid { gap: 24px; grid-template-columns: 1fr; }
+            .step { padding: 24px; }
+            .cursor-icon { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Decorative Cursor Icons -->
+    <!-- Floating & Interactive Rainbow Cursor Icons -->
     <svg class="cursor-icon cursor-icon-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
     </svg>
@@ -432,11 +387,27 @@
         <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
     </svg>
 
+    <svg class="cursor-icon cursor-icon-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
+    <svg class="cursor-icon cursor-icon-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
+    <svg class="cursor-icon cursor-icon-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
+    <svg class="cursor-icon cursor-icon-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l7.07 18.97a.5.5 0 0 0 .86.04l2.05-7.03a.5.5 0 0 1 .32-.32l7.05-2.05a.5.5 0 0 0 .04-.86L3 3z"></path>
+    </svg>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Never lose your mouse cursor again.</h1>
-            <p class="hero-subtitle">Instantly snap your cursor to the center of your screen with a simple hotkey. Built for macOS.</p>
+            <p class="hero-subtitle">Instantly teleport your cursor to the exact center of your screen with a quick <strong>trackpad shake</strong> or <strong>Cmd + Shift + M</strong>. Runs silently in the background on macOS.</p>
             
             <div class="button-group">
                 <a href="https://github.com/yoavharari/mouselocator/releases/download/v1.0.0/MouseLocator.zip" download class="button button-primary">Download for macOS (Free)</a>
@@ -453,7 +424,7 @@
     <!-- How to Install Section -->
     <section class="install-section">
         <div class="container">
-            <h2 class="section-title">How to Install</h2>
+            <h2 class="section-title">How to Install & Setup</h2>
             
             <div class="steps-grid">
                 <!-- Step 1 -->
@@ -461,7 +432,7 @@
                     <div class="step-badge">1</div>
                     <div class="step-title">Download & Unzip</div>
                     <div class="step-description">
-                        Unzip the downloaded file and drag <code>MouseLocator.app</code> into your <strong>Applications</strong> folder.
+                        Unzip the downloaded <code>MouseLocator.zip</code> file and drag <code>MouseLocator.app</code> into your <strong>Applications</strong> folder.
                     </div>
                 </div>
 
@@ -470,9 +441,9 @@
                     <div class="step-badge">2</div>
                     <div class="step-title">First-Time Launch</div>
                     <div class="step-description">
-                        <strong>Right-click</strong> <code>MouseLocator.app</code> → Click <strong>Open</strong> → Click <strong>Open</strong> again in the security prompt.
+                        <strong>Right-click</strong> <code>MouseLocator.app</code> → Click <strong>Open</strong> → Click <strong>Open</strong> again in the macOS security prompt.
                         <div class="step-note">
-                            <strong>Note:</strong> This is only required once. macOS requires this for untrusted developers.
+                            <strong>Note:</strong> Required only once to bypass Gatekeeper for independent apps.
                         </div>
                     </div>
                 </div>
@@ -480,9 +451,12 @@
                 <!-- Step 3 -->
                 <div class="step">
                     <div class="step-badge">3</div>
-                    <div class="step-title">Set Your Hotkey</div>
+                    <div class="step-title">Enable Accessibility Access</div>
                     <div class="step-description">
-                        Open macOS <strong>Shortcuts</strong> app → Create new shortcut → Add 'Open App' action → Select MouseLocator → Assign hotkey to <code>Cmd + Control + M</code>.
+                        Go to <strong>System Settings → Privacy & Security → Accessibility</strong> and toggle <strong>MouseLocator ON</strong>.
+                        <div class="step-note">
+                            <strong>Ready!</strong> Shake your trackpad or press <code>Cmd + Shift + M</code> anytime to instantly snap your cursor to center.
+                        </div>
                     </div>
                 </div>
             </div>
